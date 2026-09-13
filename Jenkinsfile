@@ -1,9 +1,10 @@
 pipeline
 {
   agent any
-  stages('checking'){
-    steps{
-#!/bin/bash
+      stages{
+         stage('checking'){
+            steps{
+              sh ''' #!/bin/bash
 
 echo "====================================="
 echo "     *** SERVER HEALTH CHECK ***"
@@ -28,6 +29,8 @@ free -h
 echo
 echo "Top Processes:"
 ps aux --sort=-%cpu | head -6
+      '''
+            }
     }
   }
 }
