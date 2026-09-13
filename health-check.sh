@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo "=============================="
-echo "     SERVER HEALTH CHECK"
-echo "=============================="
+echo "====================================="
+echo "     *** SERVER HEALTH CHECK ***"
+echo "====================================="
 
 echo
 echo "Hostname:"
