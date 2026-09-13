@@ -1,3 +1,8 @@
+pipeline
+{
+  agent any
+  stages('checking'){
+    steps{
 #!/bin/bash
 
 echo "====================================="
@@ -23,3 +28,6 @@ free -h
 echo
 echo "Top Processes:"
 ps aux --sort=-%cpu | head -6
+    }
+  }
+}
