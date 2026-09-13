@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ls -ls
+hostname
+hostnamectl
+pwd
+echo "This is the end of feature branch"
