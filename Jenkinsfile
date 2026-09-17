@@ -2,17 +2,31 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'Name', defaultValue: 'Rama', description: 'Enter your name')
-        string(name: 'Age', defaultValue: '23', description: 'Enter your age')
-        string(name: 'Marks', defaultValue: '50', description: 'Enter your marks')
+        string(
+            name: 'Name',
+            defaultValue: 'Kailash',
+            description: 'Enter your name'
+        )
+
+        choice(
+            name: 'Environment',
+            choices: ['Development', 'Testing', 'Production'],
+            description: 'Select environment'
+        )
+
+        booleanParam(
+            name: 'Deploy',
+            defaultValue: false,
+            description: 'Do you want to deploy?'
+        )
     }
 
     stages {
-        stage('Print') {
+        stage('Print Parameters') {
             steps {
-                echo "Hello ${params.Name}"
-                echo "Age: ${params.Age}"
-                echo "Marks: ${params.Marks}"
+                echo "Name: ${params.Name}"
+                echo "Environment: ${params.Environment}"
+                echo "Deploy: ${params.Deploy}"
             }
         }
     }
