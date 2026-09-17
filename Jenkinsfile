@@ -2,46 +2,17 @@ pipeline {
     agent any
 
     parameters {
-        string(defaultValue: 'main', description: 'Provide the branch to build and deploy', name: 'BRANCH')
-        
-        choice(choices: ['TEST', 'QA', 'PRE-PROD', 'PROD'], 
-               description: 'Choose env to deploy ', 
-               name: 'ENVIRONMENT')
-
-        booleanParam defaultValue: true, description: 'Un check this to actually deploy', name: 'DRY-RUN'
+        string(name: 'Name', defaultValue: 'Rama', description: 'Enter your name')
+        string(name: 'Age', defaultValue: '23', description: 'Enter your age')
+        string(name: 'Marks', defaultValue: '50', description: 'Enter your marks')
     }
 
     stages {
-        stage('STAGE1') {
+        stage('Print') {
             steps {
-                sh '''
-                    ls -lrt
-                    sleep 5
-                '''
-            }
-        }
-
-        stage('STAGE2') {
-            steps {
-                sh '''
-                    pwd 
-                    sleep 10
-                    ls -lrt
-                '''
-            }
-        }
-
-        stage('STAGE3') {
-            steps {
-                echo "This is Stage3"
-                sh 'sleep 5'
-            }
-        }
-
-        stage('STAGE4') {
-            steps {
-                 sh 'echo THis is STAGE4'
-                 sh 'sleep 5'
+                echo "Hello ${params.Name}"
+                echo "Age: ${params.Age}"
+                echo "Marks: ${params.Marks}"
             }
         }
     }
