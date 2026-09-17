@@ -3,24 +3,29 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Test') {
             steps {
-                echo "Build started"
+                script {
 
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                    sh 'exit 1'
+                    try {
+                        echo "Test started"
+                        sh 'exit 1'
+
+                    } catch (Exception e) {
+                        echo "Test failed"
+                        echo "Handling the error"
+
+                    } finally {
+                        echo "Cleanup is always executed"
+                    }
                 }
-
-                echo "Pipeline continues after catchError"
             }
         }
 
-        stage('Test') {
+        stage('Next Stage') {
             steps {
-                echo "Testing started"
-                echo "Testing completed"
+                echo "Pipeline continues"
             }
         }
     }
-}
-    
+}  
